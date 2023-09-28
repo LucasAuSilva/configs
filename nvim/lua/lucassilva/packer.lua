@@ -23,6 +23,19 @@ return require('packer').startup(function(use)
   use('onsails/lspkind-nvim') -- Icons for LSP Diagnostics
   use('styled-components/vim-styled-components') -- Highlight styled-components
 
+  use { 'folke/todo-comments.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'}
+    }
+  } -- Add Highlight for todos and FuzzyFind to it
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  } -- Toggle comments
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
