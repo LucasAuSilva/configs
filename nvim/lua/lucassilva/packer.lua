@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive') -- Best Git plugin for vim
   use('onsails/lspkind-nvim') -- Icons for LSP Diagnostics
   use('styled-components/vim-styled-components') -- Highlight styled-components
+  use('norcalli/nvim-colorizer.lua') -- color highlighter for Neovim
 
   use { 'folke/todo-comments.nvim',
     requires = {
@@ -35,6 +36,11 @@ return require('packer').startup(function(use)
         require('Comment').setup()
     end
   } -- Toggle comments
+
+  use {
+    'kevinhwang91/nvim-ufo',
+    requires = 'kevinhwang91/promise-async'
+  } -- Folding functions
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -62,4 +68,3 @@ return require('packer').startup(function(use)
   use('windwp/nvim-ts-autotag') -- Autoclosing tags for HTML, XML, etc
   use('windwp/nvim-autopairs') -- Autoclosing pairs 
 end)
-

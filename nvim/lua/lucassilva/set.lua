@@ -1,4 +1,3 @@
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -36,3 +35,4 @@ vim.opt.listchars = {
   extends = '▶',
   precedes = '◀'
 }
+

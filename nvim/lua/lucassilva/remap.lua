@@ -9,4 +9,3 @@ vim.keymap.set("n", "J", "mzJ`z")
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
-

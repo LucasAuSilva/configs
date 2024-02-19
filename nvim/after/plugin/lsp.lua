@@ -8,6 +8,7 @@ lsp.ensure_installed({
   'rust_analyzer',
 })
 
+
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
@@ -41,6 +42,7 @@ lsp.set_preferences({
 lsp.on_attach(function(_, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
+  vim.keymap.set("n", "<leader>fe", vim.cmd.EslintFixAll)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -58,3 +60,15 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+local lspconfig = require("lspconfig")
+lspconfig['tsserver'].setup {
+  on_attach = function() end,
+  capabilities = capabilities,
+}
+lspconfig['eslint'].setup {
+  on_attach = function() end,
+  capabilities = capabilities,
+}
