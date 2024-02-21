@@ -24,10 +24,7 @@ return require('packer').startup(function(use)
   use('styled-components/vim-styled-components') -- Highlight styled-components
   use('norcalli/nvim-colorizer.lua') -- color highlighter for Neovim
 
-  use({
-    "aserowy/tmux.nvim",
-    config = function() return require("tmux").setup() end
-  }) -- Add integration with tmux windows
+  use("alexghergh/nvim-tmux-navigation") -- Add integration with tmux windows
 
   use { 'folke/todo-comments.nvim',
     requires = {
