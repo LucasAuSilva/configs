@@ -1,16 +1,16 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=${PATH}:/usr/local/mysql/bin
+# export PATH=${PATH}:/usr/local/mysql/bin
 
 # Add .NET Core SDK tools
-export PATH="$PATH:/Users/lucassilva/.dotnet/tools"
+# export PATH="$PATH:/Users/lucassilva/.dotnet/tools"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/lucassilva/.oh-my-zsh"
-export CODES="/Users/lucassilva/Downloads/Codes"
+# export ZSH="/Users/lucassilva/.oh-my-zsh"
+# export CODES="/Users/lucassilva/Downloads/Codes"
 
 # Path to psql installation
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+# export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
 
 export TERM='xterm-256color'
 # Set name of the theme to load --- if set to "random", it will
@@ -161,6 +161,4 @@ zinit light-mode for \
 zinit light zdharma/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
 
