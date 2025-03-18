@@ -7,6 +7,7 @@
 	l = !git log --pretty=format:'%C(blue)%h%C(red)%d %C(yellow)%s - %C(cyan)%cn, %C(green)%cr'
 	cm = !git commit -m
 	amend = !git add . && git commit --amend --no-edit
+	po = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 [push]
   followTags = true
 [core]
