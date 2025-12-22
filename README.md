@@ -18,7 +18,7 @@ Each folder mirrors the structure expected in the target system, making the setu
 ## Symlink Setup
 
 The repository includes the `link-dotfiles` scripts (Bash and Fish), responsible for creating
-symbolic links from this repository to the appropriate locations in the home directory.
+[symbolic links](https://wiki.debian.org/SymLink) from this repository to the appropriate locations in the home directory.
 
 These scripts are designed to:
 - Work on **macOS and Linux**
