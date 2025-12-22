@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 
+# Resolve repo directory (works regardless of where it's run from)
 set REPO_DIR (cd (dirname (status --current-filename)); and pwd)
 set BACKUP_DIR "$HOME/.dotfiles_backup/(date +%Y%m%d_%H%M%S)"
 
@@ -11,7 +12,7 @@ function backup_and_link
     set src $argv[1]
     set dest $argv[2]
 
-    # Already linked correctly
+    # Already correctly linked
     if test -L $dest
         if test (readlink $dest) = $src
             echo "✔ already linked: $dest"
@@ -19,7 +20,7 @@ function backup_and_link
         end
     end
 
-    # Backup existing
+    # Backup existing file or symlink
     if test -e $dest -o -L $dest
         echo "📦 backing up $dest"
         mkdir -p (dirname $BACKUP_DIR/$dest)
@@ -31,16 +32,19 @@ function backup_and_link
     echo "🔗 linked $dest → $src"
 end
 
-# ================================
-# MAPPING (explicit & predictable)
-# ================================
-
+# =========================
+# File-level dotfiles
+# =========================
 backup_and_link "$REPO_DIR/git-config/.gitconfig" "$HOME/.gitconfig"
 backup_and_link "$REPO_DIR/zsh/.zshrc"           "$HOME/.zshrc"
+backup_and_link "$REPO_DIR/fish/config.fish"     "$HOME/.config/fish/config.fish"
 
-backup_and_link "$REPO_DIR/nvim"                 "$HOME/.config/nvim"
-backup_and_link "$REPO_DIR/tmux"                 "$HOME/.config/tmux"
-backup_and_link "$REPO_DIR/vscode"               "$HOME/.config/vscode"
+# =========================
+# Folder-level dotfiles
+# =========================
+backup_and_link "$REPO_DIR/nvim"   "$HOME/.config/nvim"
+backup_and_link "$REPO_DIR/tmux"   "$HOME/.config/tmux"
+backup_and_link "$REPO_DIR/vscode" "$HOME/.config/vscode"
 
 echo "✅ All dotfiles linked successfully"
 
