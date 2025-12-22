@@ -1,0 +1,27 @@
+
+# Font configs
+font-family = JetBrains Mono
+
+# Background configs
+background-opacity= 0.7
+background-blur = true
+
+# Keybinds
+## Create new splits with vim keys
+keybind = cmd+shift+n>h=new_split:left
+keybind = cmd+shift+n>l=new_split:right
+keybind = cmd+shift+n>k=new_split:up
+keybind = cmd+shift+n>j=new_split:down
+
+## Navigate splits with vim keys
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+
+## Zoom the current split to full app size
+keybind = cmd+shift+z=toggle_split_zoom
+
+# Theme
+theme = Catppuccin Macchiato
+

@@ -47,4 +47,3 @@ require('lspkind').init({
       TypeParameter = "",
     },
 })
-
