@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-# Resolve repo directory (works regardless of where it's run from)
+# Resolve repo directory (portable)
 set REPO_DIR (cd (dirname (status --current-filename)); and pwd)
 set BACKUP_DIR "$HOME/.dotfiles_backup/(date +%Y%m%d_%H%M%S)"
 
@@ -20,7 +20,7 @@ function backup_and_link
         end
     end
 
-    # Backup existing file or symlink
+    # Backup existing file or link
     if test -e $dest -o -L $dest
         echo "📦 backing up $dest"
         mkdir -p (dirname $BACKUP_DIR/$dest)
