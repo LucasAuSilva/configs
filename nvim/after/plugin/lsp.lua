@@ -1,74 +1,65 @@
-local lsp = require("lsp-zero")
+local lsp = require('lsp-zero')
 
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'rust_analyzer',
-})
-
-
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+lsp.preset('recommended')
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+local cmp_action = lsp.cmp_action()
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+  local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
---cmp_mappings['<Tab>'] = nil
---cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp_action.toggle_completion(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
+    ['<Tab>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
+    ['<Enter>'] = cmp.mapping.confirm({ behavior = 'select' }),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
+        error = '',
+        warn = '',
+        hint = '',
+        info = ''
     }
 })
 
--- lsp.on_attach(function(client, bufnr)
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
-
-  vim.keymap.set("n", "<leader>fe", vim.cmd.EslintFixAll)
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>ac", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>ae", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>ar", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  local bind = vim.keymap.set
+  bind("n", "gd", vim.lsp.buf.definition, opts)
+  bind("n", "gi", vim.lsp.buf.implementation, opts)
+  bind("n", "K", vim.lsp.buf.hover, opts)
+  bind("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+  bind("n", "<leader>vd", vim.diagnostic.open_float, opts)
+  bind("n", "[d", vim.diagnostic.goto_next, opts)
+  bind("n", "]d", vim.diagnostic.goto_prev, opts)
+  bind("n", "<leader>ac", vim.lsp.buf.code_action, opts)
+  bind("n", "<leader>ae", vim.lsp.buf.references, opts)
+  bind("n", "<leader>ar", vim.lsp.buf.rename, opts)
+  bind("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
-lsp.setup()
-
-vim.diagnostic.config({
-    virtual_text = true
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
 })
+vim.lsp.enable('csharp_ls')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-local lspconfig = require("lspconfig")
-lspconfig['tsserver'].setup {
-  on_attach = function() end,
-  capabilities = capabilities,
-}
-lspconfig['eslint'].setup {
-  on_attach = function() end,
-  capabilities = capabilities,
-}
+lsp.setup()
