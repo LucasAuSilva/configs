@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
   use('windwp/nvim-autopairs') -- Autoclosing pair
   use('tpope/vim-fugitive') -- Best Git plugin for vim
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
+  -- use('nvim-treesitter/playground')
 
   use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.8',
