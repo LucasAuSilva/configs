@@ -1,4 +1,7 @@
 
+# Change default shell
+command = /usr/bin/fish --login --interactive
+
 # Font configs
 font-family = JetBrains Mono
 
