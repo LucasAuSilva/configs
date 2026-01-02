@@ -1,6 +1,11 @@
 #!/usr/bin/env fish
 
 # =========================
+# Detect OS
+# =========================
+set OS (uname -s)
+
+# =========================
 # XDG config directory
 # =========================
 if set -q XDG_CONFIG_HOME
@@ -14,6 +19,7 @@ set REPO_DIR (cd (dirname (status --current-filename)); and pwd)
 set BACKUP_DIR "$HOME/.dotfiles_backup/"(date +%Y%m%d_%H%M%S)
 
 echo "🔗 Dotfiles repo: $REPO_DIR"
+echo "🖥 OS: $OS"
 echo "📁 Config home: $CONFIG_HOME"
 echo "📦 Backup dir: $BACKUP_DIR"
 
@@ -58,12 +64,22 @@ backup_and_link "$REPO_DIR/zsh/.zshrc"           "$HOME/.zshrc"
 backup_and_link "$REPO_DIR/fish/config.fish"     "$CONFIG_HOME/fish/config.fish"
 
 # =========================
-# XDG config directories
+# Cross-platform XDG configs
 # =========================
 backup_and_link "$REPO_DIR/nvim"    "$CONFIG_HOME/nvim"
 backup_and_link "$REPO_DIR/tmux"    "$CONFIG_HOME/tmux"
 backup_and_link "$REPO_DIR/vscode"  "$CONFIG_HOME/vscode"
 backup_and_link "$REPO_DIR/ghostty" "$CONFIG_HOME/ghostty"
+
+# =========================
+# Linux-only configs
+# =========================
+if test "$OS" = "Linux"
+    echo "🐧 Applying Linux-specific dotfiles"
+
+    backup_and_link "$REPO_DIR/linux/hypr"   "$CONFIG_HOME/hypr"
+    backup_and_link "$REPO_DIR/linux/waybar" "$CONFIG_HOME/waybar"
+end
 
 echo "✅ All dotfiles linked successfully"
 
