@@ -62,6 +62,7 @@ backup_and_link "$REPO_DIR/zsh/.zshrc"           "$HOME/.zshrc"
 # XDG config files
 # =========================
 backup_and_link "$REPO_DIR/fish/config.fish"     "$CONFIG_HOME/fish/config.fish"
+backup_and_link "$REPO_DIR/fish/functions"       "$CONFIG_HOME/fish/functions"
 
 # =========================
 # Cross-platform XDG configs
