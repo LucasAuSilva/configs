@@ -80,6 +80,7 @@ if test "$OS" = "Linux"
 
     backup_and_link "$REPO_DIR/linux/hypr"   "$CONFIG_HOME/hypr"
     backup_and_link "$REPO_DIR/linux/waybar" "$CONFIG_HOME/waybar"
+    backup_and_link "$REPO_DIR/linux/rofi" "$CONFIG_HOME/rofi"
 end
 
 echo "✅ All dotfiles linked successfully"
