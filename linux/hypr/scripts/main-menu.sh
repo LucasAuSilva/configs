@@ -44,16 +44,16 @@ show_apps() {
 # Tools menu
 show_tools() {
     #TOOL=$(echo -e "󰹑 Screenshot Area\n󰹑 Screenshot Full\n󰈋 Color Picker\n󰅖 Clipboard Manager\n󰃨 Wallpaper Selector\n󰌌 Emoji Picker" | rofi -dmenu -i -p "Tools")
-    TOOL=$(echo -e "󰅖 Clipboard Manager\n󰃨 Wallpaper Selector\n󰌌 Emoji Picker" | rofi -dmenu -i -p "Tools")
+    TOOL=$(echo -e "󰹑 Screenshot Area\n󰅖 Clipboard Manager\n󰃨 Wallpaper Selector\n󰌌 Emoji Picker" | rofi -dmenu -i -p "Tools")
     
     case "$TOOL" in
-        # TODO: Change screenshot app to one that i will use
-        # *"Screenshot Area")
-        #     grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%Y%m%d_%H%M%S').png
-        #     ;;
+        *"Screenshot Area")
+            hyprshot -m region --clipboard-only
+            ;;
+        # BUGFIX: Still not saving on the directory with filename
         # *"Screenshot Full")
-        #     grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') ~/Pictures/Screenshots/$(date +'%Y%m%d_%H%M%S').png
-        #     ;;
+        # hyprshot -m windows -m active -o ~/images/screenshots -f $(date +'%Y%m%d_%H%M%S').png
+            # ;;
         # TODO: Don't use but will leave just in case
         # *"Color Picker")
         #     hyprpicker -a
