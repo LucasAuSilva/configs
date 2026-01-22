@@ -98,12 +98,22 @@ return {
           require("lspconfig")[server_name].setup({})
         end,
       },
+      ["gopls"] = function()
+        require("lspconfig").gopls.setup({
+          settings = {
+            gopls = {
+              semanticTokens = true
+            }
+          }
+        })
+      end,
     })
 
     -- ========================
     -- Enable specific LSP
     -- ========================
     vim.lsp.enable("csharp_ls")
+    vim.lsp.enable("lua_ls")
 
     lsp.setup()
   end,
