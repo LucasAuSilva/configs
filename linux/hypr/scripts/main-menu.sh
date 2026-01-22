@@ -19,16 +19,16 @@ show_main_menu() {
     echo "󰏔 Install"
     echo "󰚰 Update"
     echo "󰆴 Remove"
+    echo "󱡶 Monitors"
     echo "󱐋 Performance"
     echo "󰖩 WiFi"
     echo "󰂯 Bluetooth"
     echo "󰒓 Tools"
-    # echo "󰲌 Projects"
     echo "󰍉 Search"
     echo "󰠮 Notes"
     # echo "󰔠 Time Tracker"
     echo "󰠮 Journal"
-    echo "󱡶 Services"
+    echo "󰲌 Services"
     echo "󰅬 Scripts"
     # echo "󰌌 Keybinds"
     echo "󰒓 Task Manager"
@@ -39,6 +39,42 @@ show_main_menu() {
 # Apps menu
 show_apps() {
     rofi -show drun -i
+}
+
+# Monitors menu
+show_monitors() {
+  MONITOR_JSON=$(hyprctl monitors all -j)
+
+  MONITOR=$(echo "$MONITOR_JSON" | jq -r '
+    .[] |
+    if .disabled then
+      "󰍶  \(.name) (disabled)"
+    else
+      "󰍵  \(.name) — \(.width)x\(.height)@\(.refreshRate | floor)Hz (enable)"
+    end
+  ' | rofi -dmenu -i -p "Monitors")
+
+  [[ -z "$MONITOR" ]] && return
+
+  ENABLE_COUNT=$(echo "$MONITOR_JSON" | jq '[.[] | select(.disabled == false)] | length')
+  NAME_MONITOR=$(awk '{print $2}' <<< "$MONITOR")
+
+  if echo "$MONITOR" | grep -q "disabled"; then
+    sed -i "
+    /^monitor[[:space:]]*=[[:space:]]*$NAME_MONITOR,disable/ s/^/# /
+    /^#[[:space:]]*monitor[[:space:]]*=[[:space:]]*$NAME_MONITOR,/ s/^#[[:space:]]*//
+    " ~/.config/hypr/hyprland.conf
+
+  else
+    [[ "$ENABLE_COUNT" -gt 1 ]] || {
+      notify-send "Monitor manager" "At least one monitor must stay enabled"
+      return
+    }
+    sed -i "
+    /^monitor[[:space:]]*=[[:space:]]*$NAME_MONITOR,/ s/^/# /
+    /^#[[:space:]]*monitor[[:space:]]*=[[:space:]]*$NAME_MONITOR,disable/ s/^#[[:space:]]*//
+    " ~/.config/hypr/hyprland.conf
+  fi
 }
 
 # Tools menu
@@ -747,6 +783,9 @@ case "$CHOICE" in
         ;;
     *"Remove")
         show_remove
+        ;;
+    *"Monitors")
+        show_monitors
         ;;
     *"Performance")
         show_performance
