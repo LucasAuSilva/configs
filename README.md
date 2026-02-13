@@ -29,6 +29,55 @@ These scripts are designed to:
 This approach allows the repository to act as the single source of truth for all configurations,
 making new system setups fast, reliable, and reproducible.
 
+## Pre setup
+
+Before running the symlink script, make sure the following tools are installed.
+
+These packages are required for the shell environment, Neovim setup, Treesitter compilation, and plugin dependencies.
+
+### Ubuntu/Debian
+Install base development tools and common dependencies:
+
+```bash
+sudo apt update
+sudo apt install -y \
+  build-essential \
+  curl \
+  git \
+  unzip \
+  ripgrep \
+  pkg-config \
+  libtool
+```
+
+Fish shell:
+```bash
+sudo apt install fish
+```
+
+Neovim is from [package manager](https://github.com/neovim/neovim/blob/master/INSTALL.md#install-from-package)
+
+### Arch Linux
+
+```bash
+sudo pacman -Syu \
+  base-devel \
+  curl \
+  git \
+  unzip \
+  ripgrep \
+  neovim \
+  fish \
+  pkgconf \
+  libtool
+```
+
+### Other tools that have their own installers
+
+ - **Oh My Fish (OMF)** [own installer](https://github.com/oh-my-fish/oh-my-fish)
+ - **fnm (Fast Node Manager)** [own install](https://github.com/Schniz/fnm)
+ - **tree-sitter CLI** [via cargo or npm](https://github.com/Schniz/fnm)
+
 
 ## Usage
 
