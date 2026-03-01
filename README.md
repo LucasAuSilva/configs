@@ -78,6 +78,12 @@ sudo pacman -Syu \
  - **fnm (Fast Node Manager)** [own install](https://github.com/Schniz/fnm)
  - **tree-sitter CLI** [via cargo or npm](https://github.com/Schniz/fnm)
 
+## Some Nice Shell Tools
+
+### try
+
+Ever find yourself with 50 directories named test, test2, new-test, actually-working-test, scattered across your filesystem? Or worse, just coding in /tmp and losing everything?
+[try](https://github.com/tobi/try) is here for your beautifully chaotic mind.
 
 ## Usage
 
