@@ -11,6 +11,7 @@ return {
       "yaml",
       "html",
       "css",
+      "markdown",
     },
     highlight = {
       enable = true,

@@ -46,3 +46,5 @@ vim.opt.listchars = {
   extends = '▶',
   precedes = '◀'
 }
+
+vim.filetype.add({})
