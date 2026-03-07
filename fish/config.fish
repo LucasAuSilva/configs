@@ -5,9 +5,7 @@ set -x GTK_THEME Adwaita:dark
 
 if set -q WSL_DISTRO_NAME
 
-    set -l win_user (cmd.exe /c "echo %USERNAME%" | tr -d '\r')
-
-    set -gx WIN_HOME "/mnt/c/Users/$win_user"
+    set -gx WIN_HOME "/mnt/c/Users/$USER"
 
     set -gx WIN_DESKTOP "$WIN_HOME/Desktop"
     set -gx WIN_DOWNLOADS "$WIN_HOME/Downloads"
