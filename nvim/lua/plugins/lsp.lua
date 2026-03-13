@@ -107,6 +107,24 @@ return {
           }
         })
       end,
+      ["ts_ls"] = function()
+        require("lspconfig").ts_ls.setup({
+          settings = {
+            typescript = {
+              preferences = {
+                semicolons = "remove",
+                quoteStyle = "single",
+              },
+            },
+            javascript = {
+              preferences = {
+                semicolons = "remove",
+                quoteStyle = "single",
+              }
+            }
+          }
+        })
+      end,
     })
 
     -- ========================
