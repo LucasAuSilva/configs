@@ -13,5 +13,10 @@ if set -q WSL_DISTRO_NAME
 
 end
 
+# Ruby user gems
+if test -d /home/lucassilva/.local/share/gem/ruby/3.4.0/bin
+    fish_add_path /home/lucassilva/.local/share/gem/ruby/3.4.0/bin
+end
+
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
