@@ -2,8 +2,12 @@
 # Change default shell
 command = /usr/bin/fish --login --interactive
 
+# Shaders
+custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
+
 # Font configs
 font-family = JetBrains Mono
+font-size = 12
 
 # Background configs
 background-opacity= 0.7
@@ -26,5 +30,5 @@ keybind = ctrl+k=goto_split:top
 keybind = cmd+shift+z=toggle_split_zoom
 
 # Theme
-theme = Catppuccin Macchiato
+theme = noctalia
 
