@@ -79,7 +79,8 @@ backup_and_link "$REPO_DIR/ghostty" "$CONFIG_HOME/ghostty"
 if test "$OS" = "Linux"
     echo "🐧 Applying Linux-specific dotfiles"
 
-    backup_and_link "$REPO_DIR/linux/hypr"   "$CONFIG_HOME/hypr"
+    backup_and_link "$REPO_DIR/linux/hypr"       "$CONFIG_HOME/hypr"
+    backup_and_link "$REPO_DIR/linux/noctalia"   "$CONFIG_HOME/noctalia"
 end
 
 echo "✅ All dotfiles linked successfully"
