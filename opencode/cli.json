@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "system",
+    "mode": "dark"
+  },
+  "scroll": {
+    "speed": 2,
+    "acceleration": true
+  },
+  "diffs": {
+    "view": "auto",
+    "wrap": "word"
+  }
+}
