@@ -43,7 +43,7 @@ Review the personal settings before linking:
 
 ## Symlink setup
 
-Choose a script based on the configurations you want to link. **The Bash and Fish scripts are not equivalent.** Run one from the repository root using its interpreter:
+Choose either script; they link the same configurations. Run one from the repository root using its interpreter:
 
 ```bash
 fish link-dotfiles.fish
@@ -59,26 +59,22 @@ The scripts resolve the repository location themselves. Keep the repository in p
 
 ### What each script links
 
-For Fish, `<config>` is `$XDG_CONFIG_HOME` when set, otherwise `~/.config`. Bash always uses `~/.config`.
+Both scripts use `$XDG_CONFIG_HOME` when it is set to a non-empty absolute path, otherwise `~/.config`.
 
-| Source | Fish destination | Bash destination |
-| --- | --- | --- |
-| `git-config/.gitconfig` | `~/.gitconfig` | `~/.gitconfig` |
-| `zsh/.zshrc` | Disabled | `~/.zshrc` |
-| `fish/config.fish` | Disabled | `~/.config/fish/config.fish` |
-| `fish/conf.d/` | Disabled | Not linked |
-| `fish/functions/` | `<config>/fish/functions` | Not linked |
-| `nvim/` | `<config>/nvim` | `~/.config/nvim` |
-| `tmux/` | Disabled | `~/.config/tmux` |
-| `vscode/` | Disabled | `~/.config/vscode` |
-| `kitty/` | `<config>/kitty` | Not linked |
-| `ghostty/` | `<config>/ghostty` | Not linked |
-| `linux/hypr/` | `<config>/hypr` (Linux only) | Not linked |
-| `linux/noctalia/` | `<config>/noctalia` (Linux only) | Not linked |
+| Source | Destination |
+| --- | --- |
+| `fish/config.fish` | `<config>/fish/config.fish` |
+| `fish/conf.d/` | `<config>/fish/conf.d` |
+| `fish/functions/` | `<config>/fish/functions` |
+| `nvim/` | `<config>/nvim` |
+| `kitty/` | `<config>/kitty` |
+| `opencode/cli.json` | `<config>/opencode/cli.json` |
+| `linux/hypr/` | `<config>/hypr` (native Linux only) |
+| `linux/noctalia/` | `<config>/noctalia` (native Linux only) |
 
-“Disabled” entries are commented out in the Fish script. Edit the script to enable them if needed. VS Code settings and profiles can also be imported or copied into the location used by your installation.
+VS Code settings and profiles can be imported or copied into the location used by your installation. WSL is treated as a non-native-Linux environment, so Hyprland and Noctalia are not linked there.
 
-Both scripts skip links that already point to the expected source and move existing destinations into `~/.dotfiles_backup/YYYYMMDD_HHMMSS/` before replacing them. The Fish script preserves paths relative to the home directory; Bash nests the full destination path inside the backup directory. To restore a previous configuration, remove its symlink and move the corresponding backup into its original location.
+Both scripts validate all selected sources before changing destinations, skip links that already point to the expected source, and move existing destinations into `~/.dotfiles_backup/YYYYMMDD_HHMMSS/` before replacing them. Backups preserve paths relative to the home directory; a numeric suffix is added if a backup directory for that second already exists. To restore a previous configuration, remove its symlink and move the corresponding backup into its original location. Keep the repository in place afterward, since the links point directly into it.
 
 ## Neovim
 
