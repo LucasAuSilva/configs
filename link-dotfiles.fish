@@ -29,6 +29,12 @@ function backup_and_link
     set src $argv[1]
     set dest $argv[2]
 
+    # Validate source before touching destination
+    if not test -e "$src"
+        echo "❌ Source does not exist: $src"
+        return 1
+    end
+
     # Already correctly linked
     if test -L $dest
         if test (readlink $dest) = $src
@@ -68,10 +74,11 @@ backup_and_link "$REPO_DIR/fish/functions"       "$CONFIG_HOME/fish/functions"
 # =========================
 # Cross-platform XDG configs
 # =========================
-backup_and_link "$REPO_DIR/nvim"    "$CONFIG_HOME/nvim"
-#backup_and_link "$REPO_DIR/tmux"    "$CONFIG_HOME/tmux"
-#backup_and_link "$REPO_DIR/vscode"  "$CONFIG_HOME/vscode"
-backup_and_link "$REPO_DIR/ghostty" "$CONFIG_HOME/ghostty"
+backup_and_link "$REPO_DIR/nvim"             "$CONFIG_HOME/nvim"
+#backup_and_link "$REPO_DIR/tmux"            "$CONFIG_HOME/tmux"
+#backup_and_link "$REPO_DIR/vscode"          "$CONFIG_HOME/vscode"
+backup_and_link "$REPO_DIR/kitty"            "$CONFIG_HOME/kitty"
+backup_and_link "$REPO_DIR/ghostty"          "$CONFIG_HOME/ghostty"
 
 # =========================
 # Linux-only configs

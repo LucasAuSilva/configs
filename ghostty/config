@@ -1,7 +1,4 @@
 
-# Change default shell
-command = /opt/homebrew/bin/fish
-
 # Shaders
 custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
 
