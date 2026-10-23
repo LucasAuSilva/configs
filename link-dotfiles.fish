@@ -80,6 +80,12 @@ backup_and_link "$REPO_DIR/kitty"            "$CONFIG_HOME/kitty"
 #backup_and_link "$REPO_DIR/tmux"            "$CONFIG_HOME/tmux"
 #backup_and_link "$REPO_DIR/vscode"          "$CONFIG_HOME/vscode"
 
+# OpenCode - preserve local credentials
+mkdir -p "$CONFIG_HOME/opencode"
+backup_and_link \
+    "$REPO_DIR/opencode/cli.json" \
+    "$CONFIG_HOME/opencode/cli.json"
+
 # =========================
 # Linux-only configs
 # =========================
