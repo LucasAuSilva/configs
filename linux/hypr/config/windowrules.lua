@@ -13,9 +13,9 @@ hl.window_rule({
 })
 
 -- Gaming
-hl.window_rule({ match = { content = "game" }, monitor = PRIMARY_MONITOR })
+hl.window_rule({ match = { content = "game" }, monitor = GAMING_MONITOR })
 -- hl.window_rule({ match = { xdg_tag = "^(.*game.*)$" }, monitor = PRIMARY_MONITOR, fullscreen_state = 2, content = "game", sync_fullscreen = true })
-hl.window_rule({ match = { class = "^(steam)$", initial_title = "^(Launching\\.{3})$" }, float = true, center = true, monitor = PRIMARY_MONITOR })
+hl.window_rule({ match = { class = "^(steam)$", initial_title = "^(Launching\\.{3})$" }, float = true, center = true, monitor = GAMING_MONITOR })
 hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
 hl.window_rule({
     match            = {
@@ -28,7 +28,7 @@ hl.window_rule({
     -- fullscreen       = true,
     fullscreen_state = "2",
     opaque           = true,
-    monitor          = PRIMARY_MONITOR,
+    monitor          = GAMING_MONITOR,
     size             = { "monitor_w", "monitor_h" },
     sync_fullscreen  = true,
     -- immediate        = true,
@@ -42,7 +42,15 @@ hl.window_rule({
     float            = true,
     fullscreen       = false,
     fullscreen_state = 0,
-    monitor          = PRIMARY_MONITOR,
+    monitor          = GAMING_MONITOR,
+})
+-- Steam Big Picture
+hl.window_rule({
+    match = {
+        class = "^(steam)$",
+        title = "^(Steam Big Picture Mode)$",
+    },
+    monitor = GAMING_MONITOR,
 })
 
 -- Apps
