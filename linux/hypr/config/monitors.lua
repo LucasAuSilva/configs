@@ -20,3 +20,9 @@ hl.monitor({
     scale     = "auto",
 })
 
+hl.monitor({
+    output = MONITOR_STREAM,
+    mode = "2560x1440@60",
+    position = "auto",
+    scale = "1",
+})
