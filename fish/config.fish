@@ -18,7 +18,12 @@ if test -d /home/lucassilva/.local/share/gem/ruby/3.4.0/bin
     fish_add_path /home/lucassilva/.local/share/gem/ruby/3.4.0/bin
 end
 
+# Only initialize Homebrew if running on macOS
+if test (uname) = Darwin
+  eval (/opt/homebrew/bin/brew shellenv fish)
+end
+
+
 # Generated for envman. Do not edit.
 test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
 
-eval (/opt/homebrew/bin/brew shellenv fish)

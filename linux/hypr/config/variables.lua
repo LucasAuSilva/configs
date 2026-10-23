@@ -1,6 +1,6 @@
 -- Hyprland default apps
 
-TERMINAL     = "ghostty"
+TERMINAL     = "kitty"
 FILE_MANAGER = "dolphin"
 BROWSER      = "firefox"
 EDITOR       = "gnome-text-editor --new-window"
