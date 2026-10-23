@@ -67,18 +67,18 @@ backup_and_link "$REPO_DIR/git-config/.gitconfig" "$HOME/.gitconfig"
 # =========================
 # XDG config files
 # =========================
-#backup_and_link "$REPO_DIR/fish/config.fish"     "$CONFIG_HOME/fish/config.fish"
-#backup_and_link "$REPO_DIR/fish/conf.d"          "$CONFIG_HOME/fish/conf.d"
+backup_and_link "$REPO_DIR/fish/config.fish"     "$CONFIG_HOME/fish/config.fish"
+backup_and_link "$REPO_DIR/fish/conf.d"          "$CONFIG_HOME/fish/conf.d"
 backup_and_link "$REPO_DIR/fish/functions"       "$CONFIG_HOME/fish/functions"
 
 # =========================
 # Cross-platform XDG configs
 # =========================
 backup_and_link "$REPO_DIR/nvim"             "$CONFIG_HOME/nvim"
+backup_and_link "$REPO_DIR/kitty"            "$CONFIG_HOME/kitty"
+#backup_and_link "$REPO_DIR/ghostty"          "$CONFIG_HOME/ghostty"
 #backup_and_link "$REPO_DIR/tmux"            "$CONFIG_HOME/tmux"
 #backup_and_link "$REPO_DIR/vscode"          "$CONFIG_HOME/vscode"
-backup_and_link "$REPO_DIR/kitty"            "$CONFIG_HOME/kitty"
-backup_and_link "$REPO_DIR/ghostty"          "$CONFIG_HOME/ghostty"
 
 # =========================
 # Linux-only configs
