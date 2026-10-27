@@ -24,7 +24,8 @@ set SOURCES \
     "$REPO_DIR/nvim" \
     "$REPO_DIR/kitty" \
     "$REPO_DIR/opencode/cli.json" \
-    "$REPO_DIR/opencode/commands"
+    "$REPO_DIR/opencode/commands" \
+    "$REPO_DIR/opencode/skills"
 set DESTINATIONS \
     "$CONFIG_HOME/fish/config.fish" \
     "$CONFIG_HOME/fish/conf.d" \
@@ -32,7 +33,8 @@ set DESTINATIONS \
     "$CONFIG_HOME/nvim" \
     "$CONFIG_HOME/kitty" \
     "$CONFIG_HOME/opencode/cli.json" \
-    "$CONFIG_HOME/opencode/commands"
+    "$CONFIG_HOME/opencode/commands" \
+    "$CONFIG_HOME/opencode/skills"
 
 set IS_WSL 0
 if test "$OS" = Linux; and test -r /proc/sys/kernel/osrelease
