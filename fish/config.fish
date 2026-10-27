@@ -1,8 +1,3 @@
-# --- Cross-platform PATH ---
-if test -d $HOME/go/bin
-    fish_add_path $HOME/go/bin
-end
-
 # --- OS detection ---
 set -l os (uname -s)
 set -l is_wsl 0

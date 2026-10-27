@@ -3,3 +3,12 @@
 **/plugged
 ./tmux/plugin
 ./nvim/plugin
+
+# Local/conditional environment-specific config (e.g. corporate proxy)
+fish/conf.d/proxy.fish
+
+# Any machine-local fish config (e.g. corporate certificate workarounds)
+*.local.fish
+
+# Corporate/internal opencode skill (do not publish)
+opencode/skills/podman-migration/
