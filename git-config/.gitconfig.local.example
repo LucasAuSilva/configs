@@ -1,0 +1,15 @@
+# Machine-local git identity (NOT committed).
+#
+# This file is pulled in by ~/.gitconfig via:
+#   [includeIf "gitdir:~/codes/"]
+#       path = ~/.gitconfig.local
+#
+# so any repo cloned under ~/codes/ uses this identity instead of the
+# public default. Copy this file to ~/.gitconfig.local and fill in your
+# real work details:
+#
+#   cp git-config/.gitconfig.local.example ~/.gitconfig.local
+#
+[user]
+	name = your-work-username
+	email = your.name@company.com

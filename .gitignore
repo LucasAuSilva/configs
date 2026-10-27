@@ -12,3 +12,7 @@ fish/conf.d/proxy.fish
 
 # Corporate/internal opencode skill (do not publish)
 opencode/skills/podman-migration/
+
+# Machine-local git identity (work email, etc.) — keep the .example only
+.gitconfig.local
+git-config/.gitconfig.local

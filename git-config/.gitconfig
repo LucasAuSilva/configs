@@ -22,3 +22,9 @@
     helper =
     helper = !gh auth git-credential
 
+# Work identity: automatically applied for repos under ~/codes/.
+# The referenced file is machine-local and gitignored (see .gitconfig.local.example).
+[includeIf "gitdir:~/codes/"]
+    path = ~/.gitconfig.local
+
+
