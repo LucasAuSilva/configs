@@ -1,4 +1,7 @@
 
+-- Make nvim reload buffer when change happens
+vim.opt.autoread = true
+
 -- Numbers on line
 vim.opt.nu = true
 
