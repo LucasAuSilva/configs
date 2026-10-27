@@ -48,6 +48,11 @@ for gem_bin in $HOME/.local/share/gem/ruby/*/bin
     end
 end
 
+# --- Bun ---
+if test -d "$HOME/.bun/bin"
+    fish_add_path "$HOME/.bun/bin"
+end
+
 # --- Homebrew (macOS or Linuxbrew) ---
 if test "$os" = Darwin
     if test -x /opt/homebrew/bin/brew
