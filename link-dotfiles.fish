@@ -23,6 +23,7 @@ set SOURCES \
     "$REPO_DIR/fish/functions" \
     "$REPO_DIR/nvim" \
     "$REPO_DIR/kitty" \
+    "$REPO_DIR/opencode/opencode.jsonc" \
     "$REPO_DIR/opencode/cli.json" \
     "$REPO_DIR/opencode/commands" \
     "$REPO_DIR/opencode/skills"
@@ -32,6 +33,7 @@ set DESTINATIONS \
     "$CONFIG_HOME/fish/functions" \
     "$CONFIG_HOME/nvim" \
     "$CONFIG_HOME/kitty" \
+    "$CONFIG_HOME/opencode/opencode.jsonc" \
     "$CONFIG_HOME/opencode/cli.json" \
     "$CONFIG_HOME/opencode/commands" \
     "$CONFIG_HOME/opencode/skills"
