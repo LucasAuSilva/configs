@@ -15,7 +15,7 @@ end
 # --- WSL: resolve the real Windows user profile ---
 if test "$is_wsl" = 1
     # Ask Windows for its own user profile instead of assuming it matches the WSL username.
-    set -l win_profile (cmd.exe /c "echo %USERPROFILE%" 2>/dev/null | string trim | tr -d '\r')
+    set -l win_profile (cmd.exe /c "echo %USERPROFILE%" </dev/null 2>/dev/null | string trim | tr -d '\r')
 
     if test -n "$win_profile"
         # Convert a Windows path (C:\Users\name) to a WSL path (/mnt/c/Users/name).
@@ -28,7 +28,7 @@ if test "$is_wsl" = 1
 
     # Fallback: derive from the Windows username if the above failed.
     if not set -q WIN_HOME; or not test -d "$WIN_HOME"
-        set -l win_user (cmd.exe /c "echo %USERNAME%" 2>/dev/null | string trim | tr -d '\r')
+        set -l win_user (cmd.exe /c "echo %USERNAME%" </dev/null 2>/dev/null | string trim | tr -d '\r')
         if test -n "$win_user"; and test -d "/mnt/c/Users/$win_user"
             set -gx WIN_HOME "/mnt/c/Users/$win_user"
         end
