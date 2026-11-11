@@ -3,9 +3,14 @@ local noctCall = "noctalia msg "
 local launchPrefix = "uwsm app -- " -- if you are not using UWSM, make this empty (e.g. "")
 
 ---------------------------
----- WINDOW MANAGEMENT ----
+-------- TESTING ----------
 ---------------------------
 
+hl.bind(mainMod .. " + ALT + R", hl.dsp.exec_cmd("handy --toggle-transcription"))
+
+---------------------------
+---- WINDOW MANAGEMENT ----
+---------------------------
 
 -- Only for controller
 hl.bind("CTRL + ALT + SHIFT + K", hl.dsp.exec_cmd("hyprctl kill"))

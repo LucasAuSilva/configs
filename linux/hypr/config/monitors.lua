@@ -8,9 +8,10 @@
 -- })
 hl.monitor({
     output    = MONITOR1,
-    mode      = "1920x1080@144",
+    mode      = "highrr",
     position  = "0x0",
     scale     = "auto",
+    supports_hdr = -1,
 })
 
 hl.monitor({
@@ -18,11 +19,12 @@ hl.monitor({
     mode      = "1920x1080@144",
     position  = "1920x0",
     scale     = "auto",
+    supports_hdr = -1,
 })
 
 hl.monitor({
     output = MONITOR_STREAM,
-    mode = "2560x1440@60",
+    mode = "2560x1440",
     position = "auto",
     scale = "1",
 })
