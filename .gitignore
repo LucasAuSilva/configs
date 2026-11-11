@@ -3,6 +3,7 @@
 **/plugged
 ./tmux/plugin
 ./nvim/plugin
+nvim/lazy-lock.json
 
 # Local/conditional environment-specific config (e.g. corporate proxy)
 fish/conf.d/proxy.fish
